@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArqueoCajaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ComprasController;
@@ -51,6 +52,13 @@ Route::controller(UserController::class)->group(function(){
     Route::get('users', 'index')->name('users.index');
     Route::get('users/registrarUsers', 'registrarUsers')->name('users.registrar');
     Route::post('users', 'store')->name('users.store');
+});
+
+Route::controller(ArqueoCajaController::class)->group(function(){
+    Route::get('arqueos', 'index')->name('arqueos.index');
+    Route::get('arqueos/create', 'create')->name('arqueos.create');
+    Route::post('arqueos', 'store')->name('arqueos.store');
+    Route::post('arqueos/cerrar/{id}', 'cerrarArqueo')->name('arqueos.cerrar');
 });
 
 Route::middleware([
